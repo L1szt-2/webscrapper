@@ -32,8 +32,16 @@ python_jobs = results.find_all(
     "h2", string=lambda text: "python" in text.lower()
 )
 
-print(len(python_jobs))             #prints num of jobs containing python
+# print(len(python_jobs))             #prints num of jobs containing python
 
 python_job_elements = [
     h2_element.parent.parent.parent for h2_element in python_jobs
 ]
+
+for job_element in python_job_elements:
+    links = job_element.find_all("a")
+    for link in links:
+        link_url = link["href"]
+        print(f"Apply here: {link_url}\n")
+
+    
